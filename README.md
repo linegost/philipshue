@@ -24,4 +24,10 @@ Launch your desktop's web browser, and go to localhost:4040.
 
 Launch your phone's mobile browser, and go to e.g. **192.168.1.157:4040**. The IP adress is the internal ip adress of the computer running the Node.js.
 
-# JOHNNY-FIVE [CODE EXAMPLES](http://johnny-five.io/examples/)
+---
+
+# HOW TO GET STARTED 
+
+**index.html** handles the triggers on the mobile device and **index.js** handles the Arduino execution. Look for **EDIT HERE** in both of the files. Those sections can be edited. All other CSS, HTML or JS are part of the **Hotel WiFi Hotspot Mockup**.
+
+### JOHNNY-FIVE [CODE EXAMPLES](http://johnny-five.io/examples/)
