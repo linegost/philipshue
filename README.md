@@ -17,6 +17,7 @@ Launch your phone's mobile browser, and go to localhost:4040.
 
 ### MOBILE DEVICE
 **Mac**: http://osxdaily.com/2010/11/21/find-ip-address-mac/
+
 **Windows**: https://www.groovypost.com/howto/microsoft/windows-7/find-your-local-ip-address-windows-7-cmd/
 
 Launch your phone's mobile browser, and go to e.g. **192.168.1.157:4040**. The IP adress is the internal ip adress of the computer running the Node.js.
