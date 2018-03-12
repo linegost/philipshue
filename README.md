@@ -4,7 +4,7 @@ Download the [master.zip](https://github.com/tanerolcxy/untitled/archive/master.
 ```
 $ cd /YOUR_PATH/philipshue-master
 ```
-Run the following command prompt to install necessary packages required.
+Run the following command prompt to install necessary packages required. This may take a while, be patient.
 ```
 $ npm install
 ```
