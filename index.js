@@ -6,7 +6,7 @@ var five = require('johnny-five');
 var board = new five.Board();
 board.on('ready', function() {
 
-var led = new five.Led(9);
+var led = new five.Led(9); // --- EDIT HERE ---
 
 io.on('connection', function (socket) {
 socket.on('msg', function (data) {
