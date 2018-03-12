@@ -23,13 +23,7 @@
         background-color: #141414;
         overflow: hidden;
       }
-      #homescreen {
-      	height: 100%;
-      	width: 100%;
-      	opacity: 0.0;
-        background-color: red;
-      }
-      #logo {
+      #hotel-logo {
       	position: absolute;
       	top: 30%;
       	left: 50%;
@@ -52,7 +46,7 @@
       	transform: translate(-50%, -50%);
       	z-index: 100;
       }
-      #gear {
+      #loader {
       	position: absolute;
       	top: 80%;
       	left: 50%;
@@ -64,35 +58,43 @@
       #spinner {
       	color: white;
       }
-      #logo {
+      #hotel-logo {
       	width: 80vw;
+      }
+	    
+      #DOSOMETHING {
+      	height: 100%;
+      	width: 100%;
+	display: none;
+        background-color: red;
       }
     </style>
   </head>
   <body>
-	<div id="gear">
+	<div id="loader">
 		<i class="fa-5x fas fa-spinner fa-spin" id="spinner"></i>
 	</div>
-  <img id="logo" src="https://www.woodbinedevelopment.com/wp-content/uploads/2016/10/logo-hilton-1.png">
+  <img id="hotel-logo" src="https://www.woodbinedevelopment.com/wp-content/uploads/2016/10/logo-hilton-1.png">
   <span id="button" onclick="wifi()">CONNECT NOW</span>
 	
-  <div id="homescreen"></div>
+  <div id="DOSOMETHING"></div>
   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script>
     var socket = io();
 
     function wifi() {
-    	document.getElementById("gear").style.display = "flex";
+    	document.getElementById("loader").style.display = "flex";
     	document.getElementById("button").style.display = "none";
     	setTimeout(function() {
-    		document.getElementById("spinner").setAttribute("class", "fa-5x far fa-check-circle");
+    		document.getElementById("spinner").setAttribute("class", "fa-5x fas fa-wifi");
     		document.getElementById("spinner").style.color = "#74ff1e";
     		setTimeout(function() {
-    			document.getElementById("gear").style.display = "none";
-    			document.getElementById("logo").style.display = "none";
-    			document.getElementById("homescreen").style.display = "flex";
-    			document.getElementById("homescreen").style.opacity = "1.0";
+    			document.getElementById("loader").style.display = "none";
+    			document.getElementById("hotel-logo").style.display = "none";
+			
+    			document.getElementById("DOSOMETHING").style.display = "flex";
+			
     			socket.emit('msg', 'cmd');
     		}, 1000);
     	}, 3000);
