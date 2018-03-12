@@ -8,12 +8,14 @@ Run the following command prompt to install necessary packages required.
 ```
 $ npm install
 ```
-Once the installation is complete, run the following prompt line. *The Arduino is ready to receive commands once **Repl Initialized** shows up in the console.*
+Once the installation is complete, run the following prompt line. 
 ```
 $ npm start
 ```
+(*The Arduino is ready to receive commands once **Repl Initialized** shows up in the console.*)
+
 ### DESKTOP
-Launch your phone's mobile browser, and go to localhost:4040.
+Launch your desktop's web browser, and go to localhost:4040.
 
 ### MOBILE DEVICE
 **Mac**: http://osxdaily.com/2010/11/21/find-ip-address-mac/
