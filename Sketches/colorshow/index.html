@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+    <link href="https://necolas.github.io/normalize.css/8.0.0/normalize.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <style>
+      body {
+      	font-family: 'Roboto', sans-serif;
+      	user-select: none;
+      	position: relative;
+      	margin: 0;
+      }
+      html, body {
+      	height: 100%;
+      	width: 100%;
+        background-color: #141414;
+        overflow: hidden;
+      }
+      #hotel-logo {
+      	position: absolute;
+      	top: 30%;
+      	left: 50%;
+      	transform: translate(-50%, -50%);
+      	text-align: center;
+      	z-index: 100;
+      }
+      #button {
+      	background-color: #ffffff;
+      	border-radius: 28px;
+      	border: 1px solid #ffffff;
+      	display: inline-block;
+      	cursor: pointer;
+      	color: #000;
+      	padding: 16px 31px;
+      	text-decoration: none;
+      	position: absolute;
+      	top: 60%;
+      	left: 50%;
+      	transform: translate(-50%, -50%);
+      	z-index: 100;
+      }
+      #loader {
+      	position: absolute;
+      	top: 80%;
+      	left: 50%;
+      	transform: translate(-50%, -50%);
+      	z-index: 200;
+      	text-align: center;
+      	display: none;
+      }
+      #spinner {
+      	color: white;
+			transition: color 1s;
+      }
+      #hotel-logo {
+      	width: 80vw;
+      }
+	    
+      /* --- EDIT HERE --- */    
+      #DOSOMETHING {
+      	height: 100%;
+      	width: 100%;
+				background-image: url("Screenshot_basic.png");
+				background-size: cover;
+   
+	display: none;
+            }
+    </style>
+  </head>
+  <body>
+    <div id="loader">
+	<i class="fa-5x fas fa-spinner fa-spin" id="spinner"></i>
+    </div>
+    <img id="hotel-logo" src="https://www.woodbinedevelopment.com/wp-content/uploads/2016/10/logo-hilton-1.png">
+    <span id="button" onclick="wifi()">CONNECT NOW</span>
+	
+    <!-- EDIT HERE -->	  
+    <div id="DOSOMETHING"></div>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script>
+    var socket = io();
+
+    function wifi() {
+    	document.getElementById("loader").style.display = "flex";
+    	document.getElementById("button").style.display = "none";
+    	setTimeout(function() {
+    		document.getElementById("spinner").setAttribute("class", "fa-5x fas fa-wifi");
+    		document.getElementById("spinner").style.color = "#74ff1e";
+    		setTimeout(function() {
+    			document.getElementById("loader").style.display = "none";
+    			document.getElementById("hotel-logo").style.display = "none";
+    			socket.emit('msg', 'cmd');
+			
+			// --- EDIT HERE ---
+					document.getElementById("DOSOMETHING").style.display = "flex";
+					setTimeout(function(){ document.getElementById("DOSOMETHING").style.display = "none"; }, 5000);
+			
+    		}, 1000);
+    	}, 3000);
+    }
+    </script>
+  </body>
+</html>
