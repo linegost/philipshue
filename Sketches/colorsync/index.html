@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!-- <link rel="stylesheet" type="text/css" href="/style.css"> -->
+  </head>
+  <body>	
+		<div id ="parent">
+				<!-- <img id="logo" src="https://cdn.glitch.com/82785c0f-bae2-4d5c-8ba1-9bfedd67c9f4%2FICON-black-white.png?1520936727612"> -->
+				<canvas id="canvas" width="400" height="711"></canvas> 
+		</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script>
+		var socket = io();
+		let images = ["https://cdn.glitch.com/82785c0f-bae2-4d5c-8ba1-9bfedd67c9f4%2FIMG_0168.png?1520944378951", 
+		"https://cdn.glitch.com/82785c0f-bae2-4d5c-8ba1-9bfedd67c9f4%2FIMG_0167.png?1520944152164", 
+		"https://cdn.glitch.com/82785c0f-bae2-4d5c-8ba1-9bfedd67c9f4%2FdummyBackground3.jpg?1520890391098",
+		"https://cdn.glitch.com/82785c0f-bae2-4d5c-8ba1-9bfedd67c9f4%2FIMG_0166.jpg?1520934207300", 
+		"https://cdn.glitch.com/82785c0f-bae2-4d5c-8ba1-9bfedd67c9f4%2FdummyBackground1.jpg?1520890388889", 
+		"https://cdn.glitch.com/82785c0f-bae2-4d5c-8ba1-9bfedd67c9f4%2FdummyBackground2.jpg?1520890386663"];
+		let can = document.querySelector("canvas").getContext("2d");
+		let backgroundImage = new Image();
+		backgroundImage.crossOrigin = "Anonymous";
+		let showLogo = false;
+
+		function toggleLogo()
+		{
+			if(!showLogo)
+			{
+				showLogo = true;
+			}
+			else
+			{
+				showLogo = false;
+			}
+		}
+
+		document.addEventListener("keypress", toggleLogo);
+
+		setInterval(changeImage, 2000);
+
+		function changeImage()
+		{
+			backgroundImage.src = images[Math.floor(Math.random() * images.length)];
+
+			backgroundImage.onload = function()
+			{
+				can.drawImage(backgroundImage, 0, 0);
+				let red = 0;
+				let green = 0;
+				let blue = 0;
+
+				let pixels = can.getImageData(0, 0, can.canvas.width, can.canvas.height);
+
+				for(let i = 0; i < pixels.data.length; i += 4)
+				{
+					red += pixels.data[i];
+					green += pixels.data[i + 1];
+					blue += pixels.data[i + 2];
+				}
+
+				red = Math.floor(red / (pixels.data.length / 4));
+				green = Math.floor(green / (pixels.data.length / 4));
+				blue = Math.floor(blue / (pixels.data.length / 4));
+
+				console.log("rgb: " + red + ", " + green + ", " + blue);
+				
+				function rgbToHex(r, g, b)
+				{
+					return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+				}
+				socket.emit('msg', rgbToHex(red, green, blue));
+
+				if(showLogo)
+				{
+					let logoImage = new Image();
+					logoImage.crossOrigin = "Anonymous";
+					logoImage.src = "https://cdn.glitch.com/82785c0f-bae2-4d5c-8ba1-9bfedd67c9f4%2Fsmallicon.jpg?1520940506335";
+
+					logoImage.onload = function()
+					{
+						can.drawImage(logoImage, (can.canvas.width / 2) - logoImage.width / 2, (can.canvas.height / 2) - logoImage.height / 2);
+					}
+				}
+			}
+		}
+    </script>
+  </body>
+</html>
