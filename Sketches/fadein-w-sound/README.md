@@ -1,3 +1,7 @@
+# About
+
+A color synchronization between a RGB LED Diode Lights Tricolor on a Arduino and a mobile device. Based on the theme/wallpaper applied on the mobile device, by simulating the average color of the theme, the RGB LED fades in the color intensity with a suitable sound sample.
+
 # Installation
 
 Download the [master.zip](https://github.com/tanerolcxy/philipshue/archive/master.zip) file and unpack it. Open **npm command line** and change directory to the location of the *fadein-w-sound* folder inside the *philipshue-master* folder. 
@@ -14,12 +18,10 @@ $ npm start
 ```
 (*The Arduino is ready to receive commands once **Repl Initialized** shows up in the console.*)
 
+# Deployment
+
 ### DESKTOP
 Launch your desktop's web browser, and go to localhost:4040.
 
 ### MOBILE DEVICE
-**Mac**: http://osxdaily.com/2010/11/21/find-ip-address-mac/
-
-**Windows**: https://www.groovypost.com/howto/microsoft/windows-7/find-your-local-ip-address-windows-7-cmd/
-
-Launch your phone's mobile browser, and go to e.g. **192.168.1.157:4040**. The IP adress is the internal ip adress of the computer running the Node.js.
+Launch your phone's mobile browser, and go to e.g. **192.168.1.157:4040**. The IP adress is the internal/local ip adress of the computer running the Node.js.
