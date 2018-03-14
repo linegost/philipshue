@@ -2,6 +2,7 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 app.get('/', function(req, res) { res.sendFile(__dirname + '/index.html'); });
+
 var five = require('johnny-five');
 var board = new five.Board();
 board.on('ready', function() {
@@ -25,9 +26,7 @@ board.on('ready', function() {
   //var led = new five.Led.RGB([3,5,6]);
 
   // Add led to REPL (optional)
-  this.repl.inject({
-    led: led
-  });
+  
 
   // Turn it on and set the initial color
   led.on();

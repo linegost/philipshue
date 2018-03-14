@@ -7,11 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<!-- <link rel="stylesheet" type="text/css" href="/style.css"> -->
   </head>
   <body>	
 		<div id ="parent">
-				<!-- <img id="logo" src="https://cdn.glitch.com/82785c0f-bae2-4d5c-8ba1-9bfedd67c9f4%2FICON-black-white.png?1520936727612"> -->
 				<canvas id="canvas" width="400" height="711"></canvas> 
 		</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
@@ -28,33 +26,41 @@
 		backgroundImage.crossOrigin = "Anonymous";
 		let showLogo = false;
 
-		function toggleLogo()
+		//Toggle logo and change image
+		document.addEventListener("keydown", function(event)
 		{
-			if(!showLogo)
+			if(event.keyCode == 76)
 			{
-				showLogo = true;
+				if(!showLogo)
+				{
+					showLogo = true;
+				}
+				else
+				{
+					showLogo = false;
+				}
+				changeImage();
 			}
 			else
 			{
 				showLogo = false;
+				changeImage();
 			}
-		}
-
-		document.addEventListener("keypress", toggleLogo);
-
-		setInterval(changeImage, 2000);
+		}, true);
 
 		function changeImage()
 		{
+			//Get random image from array
 			backgroundImage.src = images[Math.floor(Math.random() * images.length)];
 
 			backgroundImage.onload = function()
 			{
+				//Calculate average color of image
 				can.drawImage(backgroundImage, 0, 0);
 				let red = 0;
 				let green = 0;
 				let blue = 0;
-
+				
 				let pixels = can.getImageData(0, 0, can.canvas.width, can.canvas.height);
 
 				for(let i = 0; i < pixels.data.length; i += 4)
@@ -70,12 +76,15 @@
 
 				console.log("rgb: " + red + ", " + green + ", " + blue);
 				
+				//Convert final color to hex and send to index.js
 				function rgbToHex(r, g, b)
 				{
 					return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 				}
-				socket.emit('msg', rgbToHex(red, green, blue));
 
+				socket.emit('msg', rgbToHex(red, green, blue));
+				
+				//Show Hue logo
 				if(showLogo)
 				{
 					let logoImage = new Image();
