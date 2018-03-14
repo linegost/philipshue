@@ -14,20 +14,10 @@ $ npm start
 ```
 (*The Arduino is ready to receive commands once **Repl Initialized** shows up in the console.*)
 
+# Deployment 
+
 ### DESKTOP
 Launch your desktop's web browser, and go to localhost:4040.
 
 ### MOBILE DEVICE
-**Mac**: http://osxdaily.com/2010/11/21/find-ip-address-mac/
-
-**Windows**: https://www.groovypost.com/howto/microsoft/windows-7/find-your-local-ip-address-windows-7-cmd/
-
-Launch your phone's mobile browser, and go to e.g. **192.168.1.157:4040**. The IP adress is the internal ip adress of the computer running the Node.js.
-
----
-
-# HOW TO GET STARTED 
-
-**index.html** handles the triggers on the mobile device and **index.js** handles the Arduino execution. Look for **EDIT HERE** in both of the files. Those sections can be edited. All other CSS, HTML or JS are part of the **Hotel WiFi Hotspot Mockup**.
-
-### JOHNNY-FIVE [CODE EXAMPLES](http://johnny-five.io/examples/)
+Launch your phone's mobile browser, and go to e.g. **192.168.1.157:4040**. The IP adress is the internal/local ip adress of the computer running the Node.js.
