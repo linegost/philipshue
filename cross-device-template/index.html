@@ -3,11 +3,10 @@
   <head>
     <title></title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
     <link href="https://necolas.github.io/normalize.css/8.0.0/normalize.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <style>
@@ -62,14 +61,6 @@
       #hotel-logo {
       	width: 80vw;
       }
-	    
-      /* --- EDIT HERE --- */    
-      #DOSOMETHING {
-      	height: 100%;
-      	width: 100%;
-	display: none;
-        background-color: red;
-      }
     </style>
   </head>
   <body>
@@ -78,9 +69,6 @@
     </div>
     <img id="hotel-logo" src="https://www.woodbinedevelopment.com/wp-content/uploads/2016/10/logo-hilton-1.png">
     <span id="button" onclick="wifi()">CONNECT NOW</span>
-	
-    <!-- EDIT HERE -->	  
-    <div id="DOSOMETHING"></div>
   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script>
@@ -97,9 +85,8 @@
     			document.getElementById("hotel-logo").style.display = "none";
     			socket.emit('msg', 'cmd');
 			
-			// --- EDIT HERE ---
-    			document.getElementById("DOSOMETHING").style.display = "flex";
-			
+			// --- TRIGGER UI FEEDBACK ---
+
     		}, 1000);
     	}, 3000);
     }
