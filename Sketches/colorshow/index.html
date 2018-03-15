@@ -44,7 +44,7 @@
       	top: 60%;
       	left: 50%;
       	transform: translate(-50%, -50%);
-      	z-index: 100;
+      	z-index: 500;
       }
       #loader {
       	position: absolute;
@@ -67,10 +67,24 @@
       #DOSOMETHING {
       	height: 100%;
       	width: 100%;
-				background-image: url("Screenshot_basic.png");
+				background-image: url("Screenshot_2nd-version.png");
 				background-size: cover;
-   
-	display: none;
+				transition: all 1s;
+				opacity: 0.0;
+				position: absolute;
+				z-index: 400;
+            }
+
+			#BACKGROUND {
+				height: 100%;
+      	width: 100%;
+				background-image: url("homescreen.jpg");
+				background-size: cover;
+				display: none;
+				transition: all 1s;
+				opacity: 0.0;
+				position: absolute;
+				z-index: 300;
             }
     </style>
   </head>
@@ -83,7 +97,8 @@
 	
     <!-- EDIT HERE -->	  
     <div id="DOSOMETHING"></div>
-  
+		<div id="BACKGROUND"></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script>
     var socket = io();
@@ -100,9 +115,12 @@
     			socket.emit('msg', 'cmd');
 			
 			// --- EDIT HERE ---
-					document.getElementById("DOSOMETHING").style.display = "flex";
-					setTimeout(function(){ document.getElementById("DOSOMETHING").style.display = "none"; }, 5000);
-			
+					document.getElementById("DOSOMETHING").style.opacity = "1.0";
+					setTimeout(function(){ 
+						document.getElementById("DOSOMETHING").style.opacity = "0.0"; 
+						document.getElementById("BACKGROUND").style.display = "flex";
+						document.getElementById("BACKGROUND").style.opacity = "1.0";
+					}, 7000);
     		}, 1000);
     	}, 3000);
     }
