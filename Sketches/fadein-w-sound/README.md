@@ -4,9 +4,9 @@ A color synchronization between a RGB LED Diode Lights Tricolor on a Arduino and
 
 # Installation
 
-Download the [master.zip](https://github.com/tanerolcxy/philipshue/archive/master.zip) file and unpack it. Open **npm command line** and change directory to the location of the *fadein-w-sound* folder inside the *philipshue-master* folder. 
+Download the [master.zip](https://github.com/tanerolcxy/philipshue/archive/master.zip) file and unpack it. Open **npm command line** and change directory to the location of the *fadein-w-sound* folder inside the *philipshue-master/Sketches* folder. 
 ```
-$ cd /YOUR_PATH/philipshue-master/fadein-w-sound
+$ cd /YOUR_PATH/philipshue-master/Sketches/fadein-w-sound
 ```
 Run the following command prompt to install necessary packages required. This may take a while, be patient.
 ```
