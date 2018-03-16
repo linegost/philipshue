@@ -1,5 +1,5 @@
 # Concept: 
-
+This concept builds upon the "colour change" concept and adds a button indicating to go to the smart light control panel. 
 
 
 # Installation
