@@ -31,16 +31,16 @@
       	text-align: center;
       	z-index: 100;
       }
-			#welcome{
-				position: absolute;
-      	top: 55%;
-      	left: 50%;
-				transform: translate(-50%, -50%);
-				text-align: center;
-      	z-index: 100;
-				color:#ffffff;
-				font-size: 18px;
-			}
+      #welcome{
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	z-index: 100;
+	color:#ffffff;
+	font-size: 18px;
+      }
       #button {
       	background-color: #ffffff;
       	border-radius: 28px;
@@ -56,7 +56,7 @@
       	transform: translate(-50%, -50%);
       	z-index: 300;
       }
-			#button2 {
+      #button2 {
       	background-color: #ffffff;
       	border-radius: 28px;
       	border: 1px solid #ffffff;
@@ -82,106 +82,132 @@
       }
       #spinner {
       	color: white;
-				transition: color 1s;
+	transition: color 1s;
       }
       #hotel-logo {
       	width: 80vw;
       }
+      #back {
+      	position: absolute;
+      	top: 90%;
+      	left: 82%;
+      	transform: translate(-50%, -50%);
+      	z-index: 500;
+      	text-align: center;
+	background-color: tomato;
+	border-radius: 50px;
+      	border: transparent;
+      	cursor: pointer;
+      	color: #fff;
+      	padding: 10px 18px;
+      	display: none;
+	z-index: 200;
+      }
       #DIMMER {
       	height: 100%;
       	width: 100%;
-				display: none;
+	display: none;
         background-color: yellow;
-				position: absolute;
-				z-index: 200;
+	position: absolute;
+	z-index: 200;
       }
-			#DIMMER2 {
+      #DIMMER2 {
       	height: 100%;
       	width: 100%;
         background-color: rgb(44, 44, 4);
-				opacity: 0.0;
-				z-index: 200;
-				position: absolute;
-				transition: opacity 1.5s;
+	opacity: 0.0;
+	z-index: 200;
+	position: absolute;
+	transition: opacity 1.5s;
       }
-			#icon{
-				display: none;
-				position: absolute;
+      #icon{
+	display: none;
+	position: absolute;
       	top: 40%;
       	left: 50%;
-				height: 30%;
+	height: 30%;
       	transform: translate(-50%, -50%);
       	text-align: center;
       	z-index: 300;
-			}
-			#PANEL {
+      }
+      #PANEL {
       	height: 100%;
       	width: 100%;
-				background-size: cover;
-				display: none;
+	background-size: cover;
+	display: none;
         background-color: transparent;
-				background-image: url("CONTROL.png");
+	background-image: url("CONTROL.png");
       }
     </style>
   </head>
   <body>
-		<audio autoplay="autoplay">
-			<source src="https://cdn.glitch.com/adee48b7-faed-4116-b010-4018920f1d36%2FVista_DeviceConnect.wav?1520874190166">
-		</audio>
-    <div id="loader">
+	<audio autoplay="autoplay">
+		<source src="https://cdn.glitch.com/adee48b7-faed-4116-b010-4018920f1d36%2FVista_DeviceConnect.wav?1520874190166">
+	</audio>
+	<div id="loader">
 		<i class="fa-5x fas fa-spinner fa-spin" id="spinner"></i>
-    </div>
-    <img id="hotel-logo" src="https://www.woodbinedevelopment.com/wp-content/uploads/2016/10/logo-hilton-1.png">
-		<div id="welcome">Welcome to Your Smart Room</div>
-		<span id="button" onclick="demo()">TEST IT NOW</span>
-		<span id="button2" onclick="setting()">GO TO SETTING</span>
-		<a href="https://itunes.apple.com/us/app/philips-hue/id1055281310?mt=8"><img id="icon" src="http://qblinks.com/assets/v3/ifttt_example/hue-047b7612f97723624df851201aaa8a70.png"></a>
-    <div id="DIMMER"></div>
-		<div id="DIMMER2"></div>
-		<div id="PANEL"></div>
-
+	</div>
+	<img id="hotel-logo" src="https://www.woodbinedevelopment.com/wp-content/uploads/2016/10/logo-hilton-1.png">
+	<div id="welcome">Welcome to Your Smart Room</div>
+	<span id="button" onclick="demo()">TEST IT NOW</span>
+	<span id="button2" onclick="setting()">GO TO SETTING</span>
+	<a href="https://itunes.apple.com/us/app/philips-hue/id1055281310?mt=8"><img id="icon" src="http://qblinks.com/assets/v3/ifttt_example/hue-047b7612f97723624df851201aaa8a70.png"></a>
+	<div id="DIMMER"></div>
+	<div id="DIMMER2"></div>
+	<div id="back" onclick="goback()">
+		<i class="fa-4x fas fa-times"></i>
+	</div>
+	<div id="PANEL"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script>
-		var socket = io();
-		
-		function setting() {
-			document.getElementById("loader").style.display = "flex";
-    	document.getElementById("hotel-logo").style.display = "none";
-			document.getElementById("button").style.display = "none";
-			document.getElementById("button2").style.display = "none";
-			document.getElementById("welcome").style.display = "none";
-			document.getElementById("icon").style.display = "flex";
-			setTimeout(function() {
-					document.getElementById("loader").style.display = "none";
-					document.getElementById("icon").style.display = "none";
-					document.getElementById("PANEL").style.display = "flex";
-			}, 1000);
-		}
+	var socket = io();
 
-    function demo() {
-    	document.getElementById("loader").style.display = "flex";
-			document.getElementById("button").style.display = "none";
-			document.getElementById("button2").style.display = "none";
-			document.getElementById("welcome").style.display = "none";
-			setTimeout(function() {
-				document.getElementById("loader").style.display = "none";
-				document.getElementById("hotel-logo").style.display = "none";
-				socket.emit('msg', 'cmd');
-					// DIMMING
-					var audio = new Audio('https://cdn.glitch.com/adee48b7-faed-4116-b010-4018920f1d36%2FVista_DeviceConnect.wav?1520874190166');
-					audio.play();
-					document.getElementById("DIMMER").style.display = "flex";
-					document.getElementById("icon").style.display = "flex";
+    	function demo() {
+    		document.getElementById("loader").style.display = "flex";
+		document.getElementById("button").style.display = "none";
+		document.getElementById("button2").style.display = "none";
+		document.getElementById("welcome").style.display = "none";
+		setTimeout(function() {
+			document.getElementById("loader").style.display = "none";
+			document.getElementById("hotel-logo").style.display = "none";
+			socket.emit('msg', 'cmd');
+				// DIMMING
+				var audio = new Audio('https://cdn.glitch.com/adee48b7-faed-4116-b010-4018920f1d36%2FVista_DeviceConnect.wav?1520874190166');
+				audio.play();
+				document.getElementById("DIMMER").style.display = "flex";
+				document.getElementById("icon").style.display = "flex";
+				setTimeout(function() {
+					document.getElementById("DIMMER2").style.opacity = "1.0";
 					setTimeout(function() {
-						document.getElementById("DIMMER2").style.opacity = "1.0";
-						setTimeout(function() {
-							document.getElementById("DIMMER2").style.opacity = "0.0";
-						},3600); 
-					},1500);
-    	}, 2000);
-		}
-		
+						document.getElementById("DIMMER2").style.opacity = "0.0";
+					},3600); 
+				},1500);
+    		}, 2000);
+	}
+	function setting() {
+		document.getElementById("loader").style.display = "flex";
+		document.getElementById("hotel-logo").style.display = "none";
+		document.getElementById("button").style.display = "none";
+		document.getElementById("button2").style.display = "none";
+		document.getElementById("welcome").style.display = "none";
+		document.getElementById("icon").style.display = "flex";
+		setTimeout(function() {
+			document.getElementById("loader").style.display = "none";
+			document.getElementById("icon").style.display = "none";
+			document.getElementById("PANEL").style.display = "flex";
+		}, 1000);
+	}
+	function goback() {
+		document.getElementById("back").style.display = "none";
+		document.getElementById("DIMMER").style.display = "none";
+		document.getElementById("DIMMER2").style.opacity = "0.0";
+		document.getElementById("icon").style.display = "none";
+		document.getElementById("button").style.display = "flex";
+		document.getElementById("button2").style.display = "flex";
+		document.getElementById("welcome").style.display = "flex";
+		document.getElementById("hotel-logo").style.display = "flex";
+	}
     </script>
   </body>
 </html>
