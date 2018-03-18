@@ -1,6 +1,6 @@
 # About
 
-A extension to the *dimmer*. This prototype assumes that the user is already connected to the hotel wi-fi. When the user inserts the keycard in the hotel room, he/she gets a sound alert with a welcome page on the device. Then the user can make choice to experience the lighting demo or to visit the Philps Hue app directly. 
+A extension to the *dimmer*. This prototype assumes that the user is already connected to the hotel wi-fi. When the user inserts the keycard in the hotel room, he/she gets a sound alert with a welcome page on the device. Then the user can make choice to experience the lighting demo or to visit the Philps Hue app directly. <br>
 This prototype explores to see if the user makes better association between the indicators and the smart lighting, by removing the wi-fi connection page. Also, compared to other prototypes where the demo triggers automatically, this prototype explores less intrusive way of user interaction by allowing users to experience the demo in their own term. Lastly, along with the *wifi-button* demo, it tests whether the use of symbol and text is inevitable to help users to be aware of the smart lighting in the room.
 
 # Installation
