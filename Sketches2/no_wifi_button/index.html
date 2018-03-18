@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+    <link href="https://necolas.github.io/normalize.css/8.0.0/normalize.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <style>
+      body {
+      	font-family: 'Roboto', sans-serif;
+      	user-select: none;
+      	position: relative;
+      	margin: 0;
+      }
+      html, body {
+      	height: 100%;
+      	width: 100%;
+        background-color: #141414;
+        overflow: hidden;
+      }
+      #hotel-logo {
+      	position: absolute;
+      	top: 30%;
+      	left: 50%;
+      	transform: translate(-50%, -50%);
+      	text-align: center;
+      	z-index: 100;
+      }
+			#welcome{
+				position: absolute;
+      	top: 55%;
+      	left: 50%;
+				transform: translate(-50%, -50%);
+				text-align: center;
+      	z-index: 100;
+				color:#ffffff;
+				font-size: 18px;
+			}
+      #button {
+      	background-color: #ffffff;
+      	border-radius: 28px;
+      	border: 1px solid #ffffff;
+      	display: inline-block;
+      	cursor: pointer;
+      	color: #000;
+      	padding: 16px 41px;
+      	text-decoration: none;
+      	position: absolute;
+      	top: 70%;
+      	left: 50%;
+      	transform: translate(-50%, -50%);
+      	z-index: 300;
+      }
+			#button2 {
+      	background-color: #ffffff;
+      	border-radius: 28px;
+      	border: 1px solid #ffffff;
+      	display: inline-block;
+      	cursor: pointer;
+      	color: #000;
+      	padding: 16px 31px;
+      	text-decoration: none;
+      	position: absolute;
+      	top: 80%;
+      	left: 50%;
+      	transform: translate(-50%, -50%);
+      	z-index: 300;
+      }
+      #loader {
+      	position: absolute;
+      	top: 80%;
+      	left: 50%;
+      	transform: translate(-50%, -50%);
+      	z-index: 200;
+      	text-align: center;
+      	display: none;
+      }
+      #spinner {
+      	color: white;
+				transition: color 1s;
+      }
+      #hotel-logo {
+      	width: 80vw;
+      }
+      #DIMMER {
+      	height: 100%;
+      	width: 100%;
+				display: none;
+        background-color: yellow;
+				position: absolute;
+				z-index: 200;
+      }
+			#DIMMER2 {
+      	height: 100%;
+      	width: 100%;
+        background-color: rgb(44, 44, 4);
+				opacity: 0.0;
+				z-index: 200;
+				position: absolute;
+				transition: opacity 1.5s;
+      }
+			#icon{
+				display: none;
+				position: absolute;
+      	top: 40%;
+      	left: 50%;
+				height: 30%;
+      	transform: translate(-50%, -50%);
+      	text-align: center;
+      	z-index: 300;
+			}
+			#PANEL {
+      	height: 100%;
+      	width: 100%;
+				background-size: cover;
+				display: none;
+        background-color: transparent;
+				background-image: url("CONTROL.png");
+      }
+    </style>
+  </head>
+  <body>
+		<audio autoplay="autoplay">
+			<source src="https://cdn.glitch.com/adee48b7-faed-4116-b010-4018920f1d36%2FVista_DeviceConnect.wav?1520874190166">
+		</audio>
+    <div id="loader">
+		<i class="fa-5x fas fa-spinner fa-spin" id="spinner"></i>
+    </div>
+    <img id="hotel-logo" src="https://www.woodbinedevelopment.com/wp-content/uploads/2016/10/logo-hilton-1.png">
+		<div id="welcome">Welcome to Your Smart Room</div>
+		<span id="button" onclick="demo()">TEST IT NOW</span>
+		<span id="button2" onclick="setting()">GO TO SETTING</span>
+		<a href="https://itunes.apple.com/us/app/philips-hue/id1055281310?mt=8"><img id="icon" src="http://qblinks.com/assets/v3/ifttt_example/hue-047b7612f97723624df851201aaa8a70.png"></a>
+    <div id="DIMMER"></div>
+		<div id="DIMMER2"></div>
+		<div id="PANEL"></div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script>
+		var socket = io();
+		
+		function setting() {
+			document.getElementById("loader").style.display = "flex";
+    	document.getElementById("hotel-logo").style.display = "none";
+			document.getElementById("button").style.display = "none";
+			document.getElementById("button2").style.display = "none";
+			document.getElementById("welcome").style.display = "none";
+			document.getElementById("icon").style.display = "flex";
+			setTimeout(function() {
+					document.getElementById("loader").style.display = "none";
+					document.getElementById("icon").style.display = "none";
+					document.getElementById("PANEL").style.display = "flex";
+			}, 1000);
+		}
+
+    function demo() {
+    	document.getElementById("loader").style.display = "flex";
+			document.getElementById("button").style.display = "none";
+			document.getElementById("button2").style.display = "none";
+			document.getElementById("welcome").style.display = "none";
+			setTimeout(function() {
+				document.getElementById("loader").style.display = "none";
+				document.getElementById("hotel-logo").style.display = "none";
+				socket.emit('msg', 'cmd');
+					// DIMMING
+					var audio = new Audio('https://cdn.glitch.com/adee48b7-faed-4116-b010-4018920f1d36%2FVista_DeviceConnect.wav?1520874190166');
+					audio.play();
+					document.getElementById("DIMMER").style.display = "flex";
+					document.getElementById("icon").style.display = "flex";
+					setTimeout(function() {
+						document.getElementById("DIMMER2").style.opacity = "1.0";
+						setTimeout(function() {
+							document.getElementById("DIMMER2").style.opacity = "0.0";
+						},3600); 
+					},1500);
+    	}, 2000);
+		}
+		
+    </script>
+  </body>
+</html>
