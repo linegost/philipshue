@@ -1,6 +1,6 @@
 # Installation
 
-Download the [master.zip](https://github.com/tanerolcxy/untitled/archive/master.zip) file and unpack it. Open **npm command line** and change directory to the location of the *philipshue-master* folder. 
+Download the [master.zip](https://github.com/tanerolcxy/philipshue/archive/master.zip) file and unpack it. Open **npm command line** and change directory to the location of the *philipshue-master* folder. 
 ```
 $ cd /YOUR_PATH/philipshue-master
 ```
