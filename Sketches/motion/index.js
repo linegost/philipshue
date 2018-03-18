@@ -8,8 +8,6 @@ var five = require('johnny-five');
 var board = new five.Board();
 board.on('ready', function() {
 
-  
-
 var led = new five.Led.RGB({
   pins: {
     red: 6,
@@ -18,20 +16,20 @@ var led = new five.Led.RGB({
   }
 });
 
+//Store brightness in variable because led.intensity doesn't appear to be readable
 let LEDBrightness = 0;
 
 led.on();
 led.intensity(0);
 
-
 io.on('connection', function (socket) {
   socket.on('msg', function (data) {
+    //Increase brightness if motion data is larger than previously
     if(LEDBrightness < data)
     {
       LEDBrightness = data;
       led.intensity(100 - LEDBrightness);
     }
-
     //led.intensity(100 - data);
     console.log(Math.floor(data));
       });
