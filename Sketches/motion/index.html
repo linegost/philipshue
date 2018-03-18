@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+  </head>
+  <body>	
+		<div id ="parent">
+				<!-- <canvas id="canvas" width="400" height="711"></canvas>  -->
+				<p id="z">Z</p>
+				<p id="x">X</p>
+				<p id="y">Y</p>
+		</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script>
+		let printZ = document.getElementById("z");
+		let printX = document.getElementById("x");
+		let printY = document.getElementById("y");
+		
+		var socket = io();
+		
+		window.addEventListener("deviceorientation", getOrientation, true);
+		window.addEventListener("devicemotion", handleMotionEvent, true);
+
+		function getOrientation(event)
+		{
+			printZ.innerHTML = "Z: " + Math.floor(event.alpha);
+			printX.innerHTML = "X: " +  Math.floor(event.beta);
+			printY.innerHTML = "Y: " + Math.floor(event.gamma);
+
+			let red = Math.floor(Math.abs(event.alpha / 2));
+			let green = Math.floor(Math.abs(event.beta));
+			let blue = Math.floor(Math.abs(event.gamma));
+			
+			function rgbToHex(r, g, b)
+			{
+				return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+			}
+		}
+
+		function handleMotionEvent(event)
+		{
+			var x = event.acceleration.x;
+			var y = event.acceleration.y;
+			var z = event.acceleration.z;
+			let accel = (x + y + z) / 3;
+			socket.emit('msg', Math.abs(z * 4));
+		}
+    </script>
+  </body>
+</html>
