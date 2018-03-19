@@ -13,18 +13,15 @@
 		</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script>
-		
 		var socket = io();
 
 		window.addEventListener("devicemotion", handleMotionEvent, true);
 
+		//Detect if phone is being picked up
 		function handleMotionEvent(event)
 		{
-			let x = event.acceleration.x;
-			let y = event.acceleration.y;
 			let z = event.acceleration.z;
-			let accel = (x + y + z) / 3;
-			socket.emit('msg', Math.abs(z * 4));
+			socket.emit('msg', z * 4);
 		}
     </script>
   </body>
