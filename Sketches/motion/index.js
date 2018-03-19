@@ -17,8 +17,6 @@ board.on('ready', function()
     }
   });
 
-  let keycard = new five.Pin(10);
-
   led.on();
   led.intensity(0);
 
