@@ -5,9 +5,9 @@ This prototype explores to see if the user makes better association between the 
 
 # Installation
 
-Download the [master.zip](https://github.com/tanerolcxy/philipshue/archive/master.zip) file and unpack it. Open **npm command line** and change directory to the location of the *philipshue-master* folder. 
+Download the [master.zip](https://github.com/tanerolcxy/philipshue/archive/master.zip) file and unpack it. Open **npm command line** and change directory to the location of the *no_wifi_button* folder inside the *philipshue-master/Sketches2* folder. 
 ```
-$ cd /YOUR_PATH/philipshue-master
+$ cd /YOUR_PATH/philipshue-master/Sketches2/no_wifi_button
 ```
 Run the following command prompt to install necessary packages required. This may take a while, be patient.
 ```
