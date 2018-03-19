@@ -4,11 +4,12 @@ A colour synchronization between a LED light on a Arduino and a mobile device. T
 
 # Installation
 
-Download the [master.zip](https://github.com/tanerolcxy/philipshue/archive/master.zip) file and unpack it. Open **npm command line** and change directory to the location of the *fadein-w-sound* folder inside the *philipshue-master* folder. 
+Download the [master.zip](https://github.com/tanerolcxy/philipshue/archive/master.zip) file and unpack it. Open **npm command line** and change directory to the location of the YOUR-FOLDER-NAME folder inside the philipshue-master/Sketches folder.
 ```
-$ cd /YOUR_PATH/philipshue-master/fadein-w-sound
+$ cd /YOUR_PATH/philipshue-master/Sketches/YOUR-FOLDER-NAME
 ```
 Run the following command prompt to install necessary packages required. This may take a while, be patient.
+
 ```
 $ npm install
 ```
