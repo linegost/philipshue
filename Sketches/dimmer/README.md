@@ -7,9 +7,9 @@ The LED slowly dims down and up in duration of 6 seconds.
 
 # Installation
 
-Download the [master.zip](https://github.com/tanerolcxy/philipshue/archive/master.zip) file and unpack it. Open **npm command line** and change directory to the location of the *fadein-w-sound* folder inside the *philipshue-master* folder. 
+Download the [master.zip](https://github.com/tanerolcxy/philipshue/archive/master.zip) file and unpack it. Open **npm command line** and change directory to the location of the *dimmer* folder inside the *philipshue-master/Sketches* folder. 
 ```
-$ cd /YOUR_PATH/philipshue-master/dimmer
+$ cd /YOUR_PATH/philipshue-master/Sketches/dimmer
 ```
 Run the following command prompt to install necessary packages required. This may take a while, be patient.
 ```
