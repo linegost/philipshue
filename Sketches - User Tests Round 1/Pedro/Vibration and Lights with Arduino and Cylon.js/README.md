@@ -4,7 +4,7 @@
 
 # Installation
 
-Download the [master.zip](https://github.com/tanerolcxy/philipshue/archive/master.zip) file and unpack it. Open **npm command line** and change directory to the location of the *fadein-w-sound* folder inside the *philipshue-master/Sketches - User Tests Round 1* folder. 
+Download the [master.zip](https://github.com/tanerolcxy/philipshue/archive/master.zip) file and unpack it. Open **npm command line** and change directory to the location of the *Vibration and Lights with Arduino and Cylon.js* folder inside the *philipshue-master/Sketches - User Tests Round 1* folder. 
 ```
 $ cd /YOUR_PATH/philipshue-master/Sketches - User Tests Round 1/Pedro/Vibration and Lights with Arduino and Cylon.js
 ```
