@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8" />
+    <title>Royal Hotel - WiFi Service</title>
+    <link href="styles.css" rel="stylesheet">
+    <script src="lib/reconnecting-websocket.js"></script>
+    <script src="script.js"></script>
+    
+  </head>
+
+  <body>
+
+    <h1>Welcome to Royal Hotel WiFi Service</h1>
+
+    <img src="wifi.jpg" alt="Hotel Logo and WiFi Symbol">
+
+    <p id="text1">Please accept our terms and conditions to connect to the WiFi network.</p>
+  
+    <div id="buttons"> 
+      <input id="button1" type="submit" value="ACCEPT"  onclick="send('button1Pressed');">
+      <input id="button2" type="submit" value="DECLINE"  onclick="send('button2Pressed');">
+    </div>
+    
+  </body>
+
+</html>
