@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0035)http://192.168.0.11/debug/clip.html -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Royal Hotel WiFi Service</title>            
+</head>
+
+<body>    
+        
+    <h1>Welcome to Royal Hotel WiFi Service</h1>
+
+    <img src="wifi.jpg" alt="Hotel Logo and WiFi Symbol">
+
+    <p id="text1">Please accept our terms and conditions to connect to the WiFi network.</p>
+    
+    <div id="buttons">                
+        <button id="button1" type="button" onclick="turnOn(); getHTML('PUT');  ">TURN ON</button>
+        <button id="button2" type="button" onclick="turnOff(); getHTML('PUT'); ">TURN OFF</button>
+    </div>
+
+</body>
+
+</html>
+
+<script language="JavaScript">
+
+// Set the default state of the lamp to off.
+var messagebody = '{"on": false}';
+// Url with my HUE Bridge IP and API key
+var commandurl = "http://192.168.0.11/api/ebnrqo5bcfpOnjwIUHBvfLjWhkYlsUAGRLADR0MY/groups/Office/action";
+
+// Function to close the window.
+function closeWindow(){
+    window.close();
+}
+
+// Function to turn the lights off
+function turnOff(){
+    messagebody = '{"on": false}';
+    
+}
+
+// Function to turn the lights on and blue
+function turnOn(){
+    messagebody = '{"on": true, "sat":240, "hue":47126}';
+   
+}
+
+// Function to process the requests to the HUE Bridge
+function getHTML(command)
+{   
+    if (window.XMLHttpRequest)
+    {
+        var http = new XMLHttpRequest();
+        http.open(command, commandurl, true);
+        http.send(messagebody);
+
+        // Close the window after 2 seconds
+        setTimeout(closeWindow, 400);
+    }
+    return false;
+    
+}
+
+</script>
+
+<style>  
+
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+    }
+
+    p {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+        text-align: center;
+    }
+
+    h1 {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+        text-align: center;
+    }
+
+    #button1 {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;    
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+
+    #button2 {
+        background-color: rgb(175, 76, 76); /* Red */
+        border: none;
+        color: white;    
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+
+    #buttons{
+        margin: 0 auto; 
+        text-align: center; 
+    }
+    
+</style>
