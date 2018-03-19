@@ -12,20 +12,40 @@
         
     <h1>Welcome to Royal Hotel WiFi Service</h1>
 
-    <img src="wifi.jpg" alt="Hotel Logo and WiFi Symbol">
+    <img src="https://i.imgur.com/9M7OPbL.jpg" alt="Hotel Logo and WiFi Symbol">
 
     <p id="text1">Please accept our terms and conditions to connect to the WiFi network.</p>
+    <p id="myX"></p>
+    <p id="myY"></p>
     
     <div id="buttons">                
         <button id="button1" type="button" onclick="turnOn(); getHTML('PUT');  ">TURN ON</button>
         <button id="button2" type="button" onclick="turnOff(); getHTML('PUT'); ">TURN OFF</button>
     </div>
-
+    
 </body>
 
 </html>
 
 <script language="JavaScript">
+var hue = 0;
+
+function handleOrientation(event) {
+    var x = event.beta;  // In degree in the range [-180,180]
+    var y = event.gamma; // In degree in the range [-90,90]
+    
+    document.getElementById("myX").innerHTML = "X: " + x;
+    
+    hue = x * 90;
+
+    document.getElementById("myY").innerHTML = "HUE:" + hue;
+
+  }
+  
+  window.addEventListener('deviceorientation', handleOrientation);
+
+
+
 
 // Set the default state of the lamp to off.
 var messagebody = '{"on": false}';
@@ -45,7 +65,8 @@ function turnOff(){
 
 // Function to turn the lights on and blue
 function turnOn(){
-    messagebody = '{"on": true, "sat":240, "hue":47126}';
+    messagebody = '{"on": true, "sat":240, "hue":'+hue+'}';
+    
    
 }
 
@@ -59,7 +80,7 @@ function getHTML(command)
         http.send(messagebody);
 
         // Close the window after 2 seconds
-        setTimeout(closeWindow, 400);
+        //setTimeout(closeWindow, 400);
     }
     return false;
     
