@@ -26,12 +26,3 @@ Launch your desktop's web browser, and go to localhost:4040.
 
 ### MOBILE DEVICE
 Launch your phone's mobile browser, and go to e.g. **192.168.1.157:4040**. The IP adress is the internal/local ip adress of the computer running the Node.js.
-
-
-#Installation
-$ npm install
-$ npm install johnny-five
-
-##Deployment
-$ npm start
-On your device, enter your computer's ip adress and the server's port number, e.g 10.2.19.185:4040.
