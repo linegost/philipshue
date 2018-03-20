@@ -12,7 +12,7 @@ Run the following command prompt to install necessary packages required. This ma
 ```
 $ npm install
 ```
-Once the installation is complete, run the following prompt line. 
+Once the installation is complete, go to [Arduino Editor](https://create.arduino.cc/) and upload "Standard Firmata" to your Arduino using (*philipshue-master/cross-device-template/StandardFirmata.ino*). Once the upload is complete, run the following prompt line. 
 ```
 $ npm start
 ```
