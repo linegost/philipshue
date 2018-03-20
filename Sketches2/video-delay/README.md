@@ -1,6 +1,6 @@
 # About
 
-A extension to the *fadein-w-sound*. This prototype explores a informative solution of disrupting the transition between the wifi hotspot mockup and the Arduino LED trigger. By adding a video in between as a way of informing the user of Philips Hue, a delay is caused between the wifi connectivity and the triggers.
+A enhanced extension to a earlier version done in the first round, *fadein-w-sound*. This sketch explores a informative solution of disrupting the transition between the wifi hotspot mockup and the Arduino trigger - deliberately breaking misinterpreted feedback caused by the transition. By adding a video in between as a way of informing the user of Philips Hue, a delay is the effect, between the connectivity to wifi and the triggers.
 
 # Installation
 
