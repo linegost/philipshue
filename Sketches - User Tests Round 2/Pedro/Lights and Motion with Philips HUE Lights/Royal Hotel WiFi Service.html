@@ -30,21 +30,30 @@
 <script language="JavaScript">
 var hue = 0;
 
+var myNum = 0;
+
 function handleOrientation(event) {
-    var x = event.beta;  // In degree in the range [-180,180]
-    var y = event.gamma; // In degree in the range [-90,90]
-    
-    document.getElementById("myX").innerHTML = "X: " + x;
-    
-    hue = x * 90;
 
-    document.getElementById("myY").innerHTML = "HUE:" + hue;
+    // Get axis information
+    var x = event.alpha;
+    var y = event.beta;
+    var z = event.gamma;
 
-  }
+    // Store the sum of all axis values. 
+    myNum = x + y + z;    
+    
+    document.getElementById("myX").innerHTML = "Var: " + myNum; 
+    document.getElementById("myY").innerHTML = "HUE:" + hue; 
+
+    // Change the lights color if movement reaches a threshold.
+    if (myNum > 250){
+        document.getElementById("myX").innerHTML = "Trigger";
+        turnOn();
+    }    
+
+}
   
-  window.addEventListener('deviceorientation', handleOrientation);
-
-
+window.addEventListener('deviceorientation', handleOrientation);
 
 
 // Set the default state of the lamp to off.
@@ -65,10 +74,22 @@ function turnOff(){
 
 // Function to turn the lights on and blue
 function turnOn(){
-    messagebody = '{"on": true, "sat":240, "hue":'+hue+'}';
     
+    // Send command to the bridge
+    messagebody = '{"on": true, "sat":240, "hue":'+hue+'}';
+    getHTML('PUT');    
+    document.getElementById("myY").innerHTML = "HUE:" + hue; 
+
+    // Change colors
+    hue = hue + 9325;
+
+    // Reset the colors o red
+    if(hue >=65280){
+        hue = 0;
+    }  
    
 }
+
 
 // Function to process the requests to the HUE Bridge
 function getHTML(command)
@@ -94,7 +115,7 @@ function getHTML(command)
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 40%;
+        
     }
 
     p {
