@@ -16,11 +16,11 @@ Go to [Arduino Editor](https://create.arduino.cc/) and upload "Standard Firmata"
 ```
 $ gort scan serial
 ```
-*(shows your port the arduino is connected to)*
+*Shows your port the arduino is connected to.*
 ```
 $ gort arduino upload firmata COM6
 ```
-*(COM6 is the port I'm using, copy the result from gort scan serial and replace COM6, should be /dev/ + what port you got from scan serial to put in here if using a Mac)*
+*COM6 is the port I'm using, copy the result from gort scan serial and replace COM6, should be /dev/ + what port you got from scan serial to put in here if using a Mac.*
 
 
 ## Using gort on Mac
@@ -28,9 +28,9 @@ $ gort arduino upload firmata COM6
 
 ## Starting it up
 ```
-$ npm start (starts a live-server at localhost:5000 and starts the 'robot' on the arduino).
+$ npm start
 ```
-
+*Starts a live-server at localhost:5000 and starts the 'robot' on the arduino.*
 
 
 
