@@ -1,6 +1,6 @@
 # About
 
-...
+This prototype demos the pattern synchronization of both vibration and color change on a handheld device.
 
 # Installation
 
