@@ -1,29 +1,32 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <!-- saved from url=(0035)http://192.168.0.11/debug/clip.html -->
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-    <title>Royal Hotel WiFi Service</title>            
-</head>
+    <head>        
+        <title>Royal Hotel WiFi Service</title>            
+    </head>
 
-<body>    
+    <body>
         
-    <h1>Welcome to Royal Hotel WiFi Service</h1>
+    <div id="wrapper">
+            
+        <h1>Welcome to Royal Hotel WiFi Service</h1>
 
-    <img src="https://i.imgur.com/9M7OPbL.jpg" alt="Hotel Logo and WiFi Symbol">
+        <img src="https://i.imgur.com/9M7OPbL.jpg" alt="Hotel Logo and WiFi Symbol">
 
-    <p id="text1">Please accept our terms and conditions to connect to the WiFi network.</p>
-    <p id="myX"></p>
-    <p id="myY"></p>
-    
-    <div id="buttons">                
-        <button id="button1" type="button" onclick="turnOn(); getHTML('PUT');  ">TURN ON</button>
-        <button id="button2" type="button" onclick="turnOff(); getHTML('PUT'); ">TURN OFF</button>
+        <p id="text1">Please accept our terms and conditions to connect to the WiFi network.</p>
+        <p id="myX"></p>
+        <p id="myY"></p>
+        
+        <div id="buttons">                
+            <button id="button1" type="button" onclick="turnOn(); getHTML('PUT');  ">ACCEPT</button>
+            <button id="button2" type="button" onclick="turnOff(); getHTML('PUT'); ">DECLINE</button>
+        </div>
+
     </div>
-    
-</body>
+        
+    </body>
 
 </html>
 
@@ -46,8 +49,9 @@ function handleOrientation(event) {
     document.getElementById("myY").innerHTML = "HUE:" + hue; 
 
     // Change the lights color if movement reaches a threshold.
-    if (myNum > 250){
+    if (myNum > 400){
         document.getElementById("myX").innerHTML = "Trigger";
+        document.getElementById("myY").innerHTML = "Var: " + myNum; 
         turnOn();
     }    
 
@@ -58,8 +62,8 @@ window.addEventListener('deviceorientation', handleOrientation);
 
 // Set the default state of the lamp to off.
 var messagebody = '{"on": false}';
-// Url with my HUE Bridge IP and API key
-var commandurl = "http://192.168.0.11/api/ebnrqo5bcfpOnjwIUHBvfLjWhkYlsUAGRLADR0MY/groups/Office/action";
+// Url with my HUE Bridge IP and API key. Generate key here: http://192.168.0.11/debug/clip.html
+var commandurl = "http://192.168.0.11/api/8g6nr8eb7SPEHSb1FAqlOndWvuPePcIDzLusbGZh/groups/Office/action";
 
 // Function to close the window.
 function closeWindow(){
@@ -111,27 +115,46 @@ function getHTML(command)
 
 <style>  
 
-    img {
+
+    body {
+        font-family: "Noto Sans", Verdana, Geneva, Tahoma, sans-serif;
+        width: 450px;
         display: block;
         margin-left: auto;
         margin-right: auto;
+        height: 100%;
+        width: 400px;
+        
+    }
+
+    img {        
+        
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 400px;
+        width: 300px;
+       
         
     }
 
     p {
-        display: block;
+        
         margin-left: auto;
         margin-right: auto;
-        width: 40%;
+        width: 100%;
         text-align: center;
+        font-size: 16px;
+        color: rgb(87, 87, 87);
     }
 
     h1 {
-        display: block;
+        
         margin-left: auto;
         margin-right: auto;
-        width: 40%;
+        width: 100%;
         text-align: center;
+        font-size: 28px;
     }
 
     #button1 {
@@ -142,6 +165,8 @@ function getHTML(command)
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
+        padding: 15px 32px;
+        font-weight: bold;
     }
 
     #button2 {
@@ -152,11 +177,22 @@ function getHTML(command)
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
+        padding: 15px 32px;
+        font-weight: bold;
     }
 
     #buttons{
         margin: 0 auto; 
         text-align: center; 
+    }
+
+    #wrapper{
+        height: 100%;
+        width: 100%;
+    }
+    html{
+        height: 100%;
+        width: 100%;
     }
     
 </style>
