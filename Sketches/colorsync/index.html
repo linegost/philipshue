@@ -15,7 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script>
 		//Script for getting the average color of a dummy homescreen image and sending it to index.js via websocket
-		var socket = io();
+		let socket = io();
 		let images = ["https://cdn.glitch.com/82785c0f-bae2-4d5c-8ba1-9bfedd67c9f4%2FIMG_0168.png?1520944378951", 
 		"https://cdn.glitch.com/82785c0f-bae2-4d5c-8ba1-9bfedd67c9f4%2FIMG_0167.png?1520944152164", 
 		"https://cdn.glitch.com/82785c0f-bae2-4d5c-8ba1-9bfedd67c9f4%2FdummyBackground3.jpg?1520890391098",
@@ -27,7 +27,9 @@
 		backgroundImage.crossOrigin = "Anonymous";
 		let showLogo = false;
 
-		//Toggle logo and change image
+		changeImage();
+
+		//Toggle logo with L key and change image with any key
 		document.addEventListener("keydown", function(event)
 		{
 			if(event.keyCode == 76)
@@ -48,7 +50,7 @@
 			}
 		}, true);
 
-		function changeImage(showLogo)
+		function changeImage()
 		{
 			//Get random image from array
 			backgroundImage.src = images[Math.floor(Math.random() * images.length)];

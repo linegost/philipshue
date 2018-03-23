@@ -22,7 +22,7 @@ board.on('ready', function() {
 //Receive color from index.html and set the LED color accordingly
 io.on('connection', function (socket) {
 socket.on('msg', function (data) {
-  console.log(data);
+    console.log(data);
     led.color(data);
     });
   });
